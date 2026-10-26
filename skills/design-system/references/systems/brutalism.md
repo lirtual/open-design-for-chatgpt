@@ -11,7 +11,7 @@ Semantic starter tokens (adapt to user needs, preserve required project tokens):
   --fg: #141414;
   --muted: #454545;
   --border: #141414;
-  --accent: #d94628;
+  --accent: #b52e15;
 }
 ```
 
