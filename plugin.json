@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "author": {
+    "email": "lirtual@gmail.com",
+    "name": "kee lirtual"
+  },
+  "description": "Independent, skills-only adaptation of OpenDesign design workflows for ChatGPT. No server or MCP.",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "capabilities": [],
+        "category": "Creativity",
+        "defaultPrompt": [
+          "Create a design brief for my app.",
+          "Make an editable responsive UI prototype.",
+          "Review the accessibility of this design."
+        ],
+        "developerName": "kee lirtual",
+        "displayName": "OpenDesign for ChatGPT",
+        "longDescription": "Create design briefs, design systems, editable web and mobile UI prototypes, and evidence-based design reviews. Independent, skills-only adaptation of OpenDesign.",
+        "shortDescription": "Design systems & UI prototypes"
+      }
+    }
+  },
+  "homepage": "https://github.com/lirtual/open-design-for-chatgpt",
+  "license": "Apache-2.0",
+  "name": "open-design-for-chatgpt",
+  "repository": "https://github.com/lirtual/open-design-for-chatgpt",
+  "version": "0.1.0"
+}
