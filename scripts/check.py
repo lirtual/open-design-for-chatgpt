@@ -12,6 +12,14 @@ assert m['$schema']=='https://agent-plugins.org/schemas/1.0.0/plugin.schema.json
 assert m['name']=='open-design-for-chatgpt'
 iface=m['extensions']['com.openai']['interface']
 assert iface['category']=='Creativity' and len(iface['shortDescription'])<=30
+assert iface['displayName']=='OpenDesign'
+assert iface['logo']==iface['composerIcon']=='./assets/open-design-logo.svg'
+icon=(root/'assets/open-design-logo.svg')
+assert icon.is_file() and icon.stat().st_size<=5*1024*1024
+from xml.etree import ElementTree as ET
+svg=ET.parse(icon).getroot()
+assert svg.tag.endswith('svg') and svg.attrib.get('viewBox')=='0 0 256 256'
+assert svg.attrib.get('width')=='256' and svg.attrib.get('height')=='256'
 assert {p.parent.name for p in (root/'skills').glob('*/SKILL.md')}==skills
 
 for name in sorted(skills):

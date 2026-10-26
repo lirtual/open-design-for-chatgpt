@@ -10,9 +10,10 @@ manifest=json.loads((root/'plugin.json').read_text())
 p=d/(manifest['name']+'-'+manifest['version']+'.zip')
 base_files=['plugin.json','LICENSE','ATTRIBUTION.md']
 skill_entries=list((root/'skills').rglob('*'))
-if (root/'skills').is_symlink() or any(x.is_symlink() for x in skill_entries + [root/x for x in base_files]):
+asset_entries=list((root/'assets').rglob('*'))
+if (root/'skills').is_symlink() or (root/'assets').is_symlink() or any(x.is_symlink() for x in skill_entries + asset_entries + [root/x for x in base_files]):
     raise SystemExit('Refusing to package symlinked source files or directories')
-f=base_files + [str(x.relative_to(root)) for x in skill_entries if x.is_file() and '__pycache__' not in str(x)]
+f=base_files + [str(x.relative_to(root)) for x in skill_entries if x.is_file() and '__pycache__' not in str(x)] + [str(x.relative_to(root)) for x in asset_entries if x.is_file()]
 with ZipFile(p,'w',ZIP_DEFLATED) as z:
     for x in sorted(f):z.write(root/x,arcname=manifest['name']+'/'+x)
 with ZipFile(p) as z:
