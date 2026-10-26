@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Responsive Mobile UI Example</title><style>
+:root{--bg:#f7f8fb;--surface:#fff;--fg:#19202a;--muted:#515b69;--border:#cbd2dc;--accent:#174ea6}
+*{box-sizing:border-box}html{color-scheme:light}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
+a{color:var(--accent)}a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+button{font:inherit;cursor:pointer;background:var(--accent);color:white;border:0;border-radius:8px;padding:.75rem 1.2rem}
+button:hover{filter:brightness(.93)}.container{max-width:1100px;margin:auto;padding:1.5rem}.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.4rem}.muted{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}h1{font-size:clamp(2rem,5vw,3.7rem);line-height:1.12;letter-spacing:-.035em}h2{font-size:1.3rem}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:760px){.grid{grid-template-columns:1fr}.container{padding:1rem}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style></head><body><a class="sr-only" href="#main">Skip to content</a>
+<main id="main" class="container" style="max-width:440px"><header><p class="muted">Example mobile UI · Not a native app</p><h1 style="font-size:2rem">Today</h1><p>Welcome to your tasks.</p></header><section aria-label="Task list" class="card"><h2>Things to do</h2><ul style="padding-left:1rem"><li><label><input type="checkbox"> Review the prototype</label></li><li><label><input type="checkbox"> Confirm the content</label></li><li><label><input type="checkbox"> Share the draft</label></li></ul><p class="muted" id="count" role="status">0 of 3 completed</p></section><nav aria-label="App sections" class="card" style="display:flex;gap:1rem;margin-top:1rem"><a aria-current="page" href="#main">Today</a><a href="#count">Progress</a></nav></main><script>const boxes=[...document.querySelectorAll('input[type=checkbox]')];const count=document.getElementById('count');boxes.forEach(x=>x.addEventListener('change',()=>count.textContent=boxes.filter(x=>x.checked).length+' of 3 completed'));</script>
+</body></html>
